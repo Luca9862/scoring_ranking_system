@@ -2,6 +2,19 @@ import wikipediaapi
 import tkinter
 
 wiki = wikipediaapi.Wikipedia('it')
+
+persone = [
+    'Romolo',
+    'Gaio Giulio Cesare',
+    'Dante Alighieri',
+    'Leonardo Da Vinci',
+    'Benito Mussolini',
+    'Umberto II di Savoia',
+    'Rita Levi-Montalcini',
+    'Silvio Berlusconi',
+    'Mario Draghi'
+    ]
+
 pesi = {
     'pagine': 0.001,
     'lingue': 0.002,
@@ -80,6 +93,23 @@ def calcola_scores(lista):
     classifica = sorted(scores.items(), key=lambda x: x[1], reverse=True)
     return classifica
 
+scores = {}
+#Calcolo punteggi
+for persona in persone:
+    score = 0
+    score += pesi['pagine'] * num_pagine(persona)
+    score += pesi['lingue'] * num_lingue(persona)
+    score += pesi['bibliografie'] * num_bibliografie(persona)
+    score += pesi['categorie'] * num_categorie(persona)
+    score += pesi['sezioni'] * num_sezioni(persona)
+    score += pesi['parole'] * num_parole(persona)
+    scores[persona] = score
+#Creazione della classifica ordinando gli elementi in ordine decrescente
+classifica = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+for pos, (persona, score) in enumerate(classifica, 1):
+    print(f"{pos}. {persona}: {score:.2f}")
+
+'''
 def genrate_button():
     lista = []
     lista.append(input_one.get())
@@ -112,3 +142,4 @@ text_one = tkinter.Text()
 text_one.grid(column=1)
 
 root.mainloop()
+'''
