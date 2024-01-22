@@ -9,3 +9,7 @@ This code uses the wikipediaapi library to retrieve information from Wikipedia p
 6. The last part of the code calculates scores for each person in the people list, creates a ranked list, and prints the results in a readable format.
 
 In summary, the code is designed to assess and rank individuals based on some metrics obtained from their Italian Wikipedia pages. Scores are calculated based on weights assigned to different metrics, and the final ranking is printed in descending order of scores.
+
+<figure>
+  <img src="./pictures/example_screen.png" alt="example screen"  width = "500" height = "397">
+</figure>
